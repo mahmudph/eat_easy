@@ -25,4 +25,22 @@ class UserOrder {
     required this.totalPrice,
     this.message,
   });
+
+  UserOrder copyWith({
+    Product? product,
+    int? numOfOrder,
+    double? totalPrice,
+    String? message,
+    List<ProductToppings>? toppings,
+    List<Product>? otherProduct,
+  }) {
+    return UserOrder(
+      id: id,
+      product: product ?? this.product,
+      otherProduct: otherProduct ?? this.otherProduct,
+      numOfOrder: numOfOrder ?? this.numOfOrder,
+      toppings: toppings ?? this.toppings,
+      totalPrice: totalPrice ?? this.totalPrice,
+    );
+  }
 }
