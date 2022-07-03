@@ -199,7 +199,7 @@ class AppStorage extends ChangeNotifier {
 
   void updateOrder(String orderId, [bool isAdd = true]) {
     var data = _userOrder.updateUserOrder(orderId, isAdd);
-    _userOrder = data;
+    _userOrder = List<UserOrder>.from(data);
     notifyListeners();
   }
 
