@@ -9,9 +9,12 @@ import 'ui/routes/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
-    SystemUiOverlay.top,
-  ]);
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [
+      SystemUiOverlay.top,
+    ],
+  );
   runApp(const MyApp());
 }
 
