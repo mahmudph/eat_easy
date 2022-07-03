@@ -76,35 +76,31 @@ class _OrderActionWidgetState extends State<OrderActionWidget> {
           numOfOrder,
         );
         context.showLoading(const Duration(seconds: 1));
-        Future.delayed(const Duration(seconds: 2)).then((_) {
-          context.showToast(true, message: "success to order product");
-        });
       },
-      child: Expanded(
-        child: Container(
-          height: 50,
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 10,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: const Color(0xff615793),
-          ),
-          child: Selector<AppStorage, double>(
-            selector: (_, state) => state.getPriceById(widget.product.id),
-            builder: (_, state, __) {
-              return Text(
-                "Order Price \$${((widget.product.productPrice * numOfOrder) + state).toStringAsFixed(2)}",
-                style: const TextStyle(
-                  fontFamily: 'Mulish',
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
-              );
-            },
-          ),
+      child: Container(
+        height: 50,
+        width: MediaQuery.of(context).size.width * 0.6,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: const Color(0xff615793),
+        ),
+        child: Selector<AppStorage, double>(
+          selector: (_, state) => state.getPriceById(widget.product.id),
+          builder: (_, state, __) {
+            return Text(
+              "Order Price \$${((widget.product.productPrice * numOfOrder) + state).toStringAsFixed(2)}",
+              style: const TextStyle(
+                fontFamily: 'Mulish',
+                fontSize: 16,
+                color: Colors.white,
+              ),
+            );
+          },
         ),
       ),
     );
