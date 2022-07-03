@@ -59,8 +59,10 @@ extension UserOrderExtensions on List<UserOrder> {
       } else if (userOrder.numOfOrder > 1) {
         var data = map((e) {
           if (e.id == orderId) {
-            e.numOfOrder -= 1;
-            e.totalPrice -= e.product.productPrice;
+            return e.copyWith(
+              numOfOrder: e.numOfOrder - 1,
+              totalPrice: e.totalPrice - e.product.productPrice,
+            );
           }
           return e;
         });
@@ -69,8 +71,10 @@ extension UserOrderExtensions on List<UserOrder> {
     }
     var data = map((e) {
       if (e.id == orderId) {
-        e.numOfOrder += 1;
-        e.totalPrice += e.product.productPrice;
+        return e.copyWith(
+          numOfOrder: e.numOfOrder + 1,
+          totalPrice: e.totalPrice + e.product.productPrice,
+        );
       }
       return e;
     });
