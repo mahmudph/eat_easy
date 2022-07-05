@@ -19,17 +19,15 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  late ValueNotifier<int> currentIndex;
+  late int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    currentIndex = ValueNotifier<int>(0);
   }
 
   @override
   void dispose() {
-    currentIndex.dispose();
     super.dispose();
   }
 
@@ -119,7 +117,7 @@ class _IntroScreenState extends State<IntroScreen> {
         itemCount: introPage.length,
         scrollDirection: Axis.horizontal,
         onPageChanged: (index) {
-          currentIndex.value = index;
+          setState(() => currentIndex = index);
         },
         itemBuilder: (_, index) {
           return IntroPageViewItem(
@@ -136,14 +134,9 @@ class _IntroScreenState extends State<IntroScreen> {
       left: 0,
       right: 0,
       child: Center(
-        child: ValueListenableBuilder<int>(
-          valueListenable: currentIndex,
-          builder: (_, curIndex, __) {
-            return IndicatorPageViewWidget(
-              currentPage: curIndex,
-              pageLength: introPage.length,
-            );
-          },
+        child: IndicatorPageViewWidget(
+          currentPage: currentIndex,
+          pageLength: introPage.length,
         ),
       ),
     );

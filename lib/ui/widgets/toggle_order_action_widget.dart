@@ -25,17 +25,16 @@ class ToggleOrderActionWidget extends StatefulWidget {
 }
 
 class _ToggleOrderActionWidgetState extends State<ToggleOrderActionWidget> {
-  late ValueNotifier<int> numOfOrder;
+  late int numOfOrder;
 
   @override
   void initState() {
     super.initState();
-    numOfOrder = ValueNotifier<int>(widget.numOfOrder);
+    numOfOrder = widget.numOfOrder;
   }
 
   @override
   void dispose() {
-    numOfOrder.dispose();
     super.dispose();
   }
 
@@ -52,32 +51,27 @@ class _ToggleOrderActionWidgetState extends State<ToggleOrderActionWidget> {
             iconColor: const Color(0xff8E8EA9),
             backgroundColor: const Color(0xffEAEAEF),
             onTap: () {
-              if (numOfOrder.value > 0) {
-                numOfOrder.value -= 1;
+              if (numOfOrder > 0) {
+                setState(() => numOfOrder -= 1);
                 if (widget.onPressRemove != null) widget.onPressRemove!();
               }
             },
           ),
-          ValueListenableBuilder<int>(
-            valueListenable: numOfOrder,
-            builder: (_, state, __) {
-              return Text(
-                state.toString(),
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontFamily: "Mulish",
-                  color: Color(0xff32324D),
-                  fontWeight: FontWeight.w600,
-                ),
-              );
-            },
+          Text(
+            numOfOrder.toString(),
+            style: const TextStyle(
+              fontSize: 14,
+              fontFamily: "Mulish",
+              color: Color(0xff32324D),
+              fontWeight: FontWeight.w600,
+            ),
           ),
           ToggleOrderButtonWidget(
             icon: Icons.add,
             iconColor: const Color(0xffFF7B2C),
             backgroundColor: const Color(0xffFFF2EA),
             onTap: () {
-              numOfOrder.value += 1;
+              setState(() => numOfOrder += 1);
               if (widget.onPressAdd != null) widget.onPressAdd!();
             },
           ),
