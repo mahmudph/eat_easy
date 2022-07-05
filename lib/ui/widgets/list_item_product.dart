@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'product_price_widget.dart';
 import 'toggle_order_action_widget.dart';
 
-class ListItemProductWidget extends StatefulWidget {
+class ListItemProductWidget extends StatelessWidget {
   final Product product;
   final bool withCountingNumItem;
   final void Function(String) onPress;
@@ -19,6 +19,7 @@ class ListItemProductWidget extends StatefulWidget {
   final VoidCallback? onPressRemove;
   final int numOfOrder;
   final double? price;
+
   const ListItemProductWidget({
     Key? key,
     this.withCountingNumItem = false,
@@ -31,15 +32,10 @@ class ListItemProductWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ListItemProductWidget> createState() => _ListItemProductWidgetState();
-}
-
-class _ListItemProductWidgetState extends State<ListItemProductWidget> {
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () => widget.onPress(widget.product.id),
+      onTap: () => onPress(product.id),
       child: Container(
         height: size.width * 0.3,
         width: double.infinity,
@@ -63,7 +59,7 @@ class _ListItemProductWidgetState extends State<ListItemProductWidget> {
                 height: 100,
                 width: 100,
                 child: Image.asset(
-                  widget.product.productImage,
+                  product.productImage,
                 ),
               ),
             ),
@@ -76,7 +72,7 @@ class _ListItemProductWidgetState extends State<ListItemProductWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.product.productName,
+                    product.productName,
                     style: const TextStyle(
                       fontSize: 14,
                       fontFamily: "Mulish",
@@ -86,16 +82,16 @@ class _ListItemProductWidgetState extends State<ListItemProductWidget> {
                   ),
                   reviewContenWidget(),
                   ProductPrice(
-                    productPrice: widget.price ?? widget.product.productPrice,
+                    productPrice: price ?? product.productPrice,
                   )
                 ],
               ),
             ),
-            if (widget.withCountingNumItem)
+            if (withCountingNumItem)
               ToggleOrderActionWidget(
-                onPressAdd: widget.onPressAdd,
-                onPressRemove: widget.onPressRemove,
-                numOfOrder: widget.numOfOrder,
+                onPressAdd: onPressAdd,
+                onPressRemove: onPressRemove,
+                numOfOrder: numOfOrder,
               )
           ],
         ),
@@ -112,7 +108,7 @@ class _ListItemProductWidgetState extends State<ListItemProductWidget> {
         ),
         RichText(
           text: TextSpan(
-            text: widget.product.productRatings.toString(),
+            text: product.productRatings.toString(),
             style: const TextStyle(
               fontSize: 12,
               fontFamily: "Mulish",
@@ -121,7 +117,7 @@ class _ListItemProductWidgetState extends State<ListItemProductWidget> {
             ),
             children: [
               TextSpan(
-                text: "${widget.product.productReviewCount} Reviews",
+                text: "${product.productReviewCount} Reviews",
                 style: const TextStyle(
                   fontSize: 12,
                   fontFamily: "Mulish",

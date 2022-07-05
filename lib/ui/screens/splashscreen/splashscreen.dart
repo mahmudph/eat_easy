@@ -10,17 +10,10 @@ import 'package:eat_easy_app/ui/widgets/widgets.dart';
 import 'package:eat_easy_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class Splashscreen extends StatefulWidget {
-  const Splashscreen({Key? key}) : super(key: key);
+class Splashscreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 
-  @override
-  State<Splashscreen> createState() => _SplashscreenState();
-}
-
-class _SplashscreenState extends State<Splashscreen> {
-  @override
-  void initState() {
-    super.initState();
+  Splashscreen({Key? key}) : super(key: key) {
     initializeApp();
   }
 
@@ -43,15 +36,10 @@ class _SplashscreenState extends State<Splashscreen> {
 
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushNamedAndRemoveUntil(
-      context,
+      _globalKey.currentState!.context,
       navigateOnPassed,
       (route) => false,
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override
@@ -59,6 +47,7 @@ class _SplashscreenState extends State<Splashscreen> {
     Size size = MediaQuery.of(context).size;
     return StatusBarWidget(
       child: Scaffold(
+        key: _globalKey,
         backgroundColor: Colors.white,
         body: SizedBox(
           width: size.width,

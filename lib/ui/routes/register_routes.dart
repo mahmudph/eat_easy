@@ -11,7 +11,7 @@ import 'package:eat_easy_app/ui/screens/screens.dart';
 
 /// define all routes with the class of the screen
 Map<String, WidgetBuilder> routes = {
-  Routes.splashscreen: (_) => const Splashscreen(),
+  Routes.splashscreen: (_) => Splashscreen(),
   Routes.intro: (_) => const IntroScreen(),
   Routes.landing: (_) => const LandingScreen(),
   Routes.registerInputEmail: (_) => const RegisterInputEmail(),
