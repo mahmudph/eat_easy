@@ -10,16 +10,16 @@ https://www.dicoding.com/academies/159
 
 
 
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244908.png" alt="image" style="zoom:25%" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244891.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244908.png" alt="image" style="zoom:25%" /> | <img src="./resources/Screenshot_1657244891.png" style="zoom:25%;" /> |
 | -----------------------------------------------------------: | :----------------------------------------------------------- |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244914.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244918.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244933.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244957.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244963.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244965.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244968.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244972.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244975.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244977.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244981.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244990.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657244996.png" style="zoom:25%;" /> | <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657245004.png" style="zoom:25%;" /> |
-| <img src="/Users/Mahmud/Documents/mobile-project/flutter-project/eat_easy_app/resources/Screenshot_1657245013.png" style="zoom:25%;" /> |                                                              |
+| <img src="./resources/Screenshot_1657244914.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244918.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244933.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244957.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244963.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244965.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244968.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244972.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244975.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244977.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244981.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657244990.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657244996.png" style="zoom:25%;" /> | <img src="./resources/Screenshot_1657245004.png" style="zoom:25%;" /> |
+| <img src="./resources/Screenshot_1657245013.png" style="zoom:25%;" /> |                                                              |
 
 
 
