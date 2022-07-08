@@ -33,6 +33,7 @@ class ToggleOrderButtonWidget extends StatelessWidget {
         child: Icon(
           icon,
           color: iconColor,
+          size: 17,
         ),
       ),
     );

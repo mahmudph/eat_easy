@@ -85,16 +85,20 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
     return StatusBarWidget(
       child: Scaffold(
         backgroundColor: const Color(0xffF8F8F8),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _headerNavigationWidget(context, size),
-              _contentDataWidget(context, size),
-              _bottomWidgetContent(context, size)
-            ],
+        body: SizedBox(
+          height: size.height,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _headerNavigationWidget(context, size),
+                  _contentDataWidget(context, size),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -103,12 +107,13 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
 
   Widget _contentDataWidget(BuildContext context, Size size) {
     return SizedBox(
-      height: size.height * 0.6,
+      height: size.height * 0.88,
       width: double.infinity,
       child: Stack(
         children: [
           _contentWidget(context, size),
           _contentIndicatorWidget(context, size),
+          _bottomWidgetContent(context, size)
         ],
       ),
     );
@@ -121,7 +126,7 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
       right: 0,
       child: SizedBox(
         width: double.infinity,
-        height: size.height * 0.5,
+        height: size.height,
         child: PageView.builder(
           controller: scrollController,
           physics: const NeverScrollableScrollPhysics(),
@@ -151,7 +156,7 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
 
   Widget _contentIndicatorWidget(BuildContext context, Size size) {
     return Positioned(
-      top: 0,
+      top: 10,
       left: 0,
       right: 0,
       child: ValueListenableBuilder<int>(
@@ -171,7 +176,7 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
     return Column(
       children: [
         const SizedBox(
-          height: 40,
+          height: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,9 +229,10 @@ class _RegisterQuestionScreenState extends State<RegisterQuestionScreen> {
 
   Widget _bottomWidgetContent(BuildContext context, Size size) {
     var provider = Provider.of<AppStorage>(context, listen: false);
-
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Positioned(
+      bottom: 0,
+      left: 0,
+      right: 0,
       child: Column(
         children: [
           ButtonWidget(

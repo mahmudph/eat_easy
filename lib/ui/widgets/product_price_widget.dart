@@ -22,7 +22,7 @@ class ProductPrice extends StatelessWidget {
       text: TextSpan(
         text: "\$ ",
         style: TextStyle(
-          fontSize: (fontSize - 4),
+          fontSize: (fontSize - 5),
           fontFamily: "Mulish",
           color: const Color(0xffFF7B2C),
           fontWeight: FontWeight.w600,

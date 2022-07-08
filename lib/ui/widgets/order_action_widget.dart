@@ -57,9 +57,6 @@ class _OrderActionWidgetState extends State<OrderActionWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _toggleAction(provider),
-          const SizedBox(
-            width: 20,
-          ),
           _orderPrice(provider),
         ],
       ),

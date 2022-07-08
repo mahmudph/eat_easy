@@ -50,7 +50,7 @@ class ClipItemWidget extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             fontFamily: "Mulish",
             fontWeight: FontWeight.w500,
             color: isActive ? isActiveTextColor : textColor,

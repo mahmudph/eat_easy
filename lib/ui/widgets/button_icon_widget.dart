@@ -32,7 +32,7 @@ class ButtonIconWidget extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
@@ -43,9 +43,12 @@ class ButtonIconWidget extends StatelessWidget {
             ),
             child: IconButton(
               onPressed: onPress,
+              padding: const EdgeInsets.all(6),
+              constraints: const BoxConstraints(),
               icon: Icon(
                 icon,
                 color: iconColor,
+                size: 20,
               ),
             ),
           ),

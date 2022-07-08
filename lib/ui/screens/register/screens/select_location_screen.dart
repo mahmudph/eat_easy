@@ -45,18 +45,35 @@ class _RegisterSelectLocationScreenState
     return StatusBarWidget(
       child: Scaffold(
         backgroundColor: const Color(0xffF8F8F8),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const HeaderNavWidget(),
-              _contentDataWidget(context, size),
-              _contentListWidget(context, size),
-              _contentButtonWidget(context, size),
-            ],
-          ),
+        body: Stack(
+          children: [
+            Positioned(
+              child: SizedBox(
+                height: size.height,
+                width: size.width,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const HeaderNavWidget(),
+                        _contentDataWidget(context, size),
+                        _contentListWidget(context, size),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 16,
+              left: 16,
+              right: 16,
+              child: _contentButtonWidget(context, size),
+            )
+          ],
         ),
       ),
     );
@@ -72,8 +89,9 @@ class _RegisterSelectLocationScreenState
 
   Widget _contentListWidget(BuildContext context, Size size) {
     return SizedBox(
-      height: size.height * 0.5,
+      height: size.height * 0.8,
       child: ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (_, i) {
           return ValueNotifierBuilder2<int, bool>(
             listenable1: indexSelected,

@@ -18,13 +18,15 @@ class RegisterPerfectDistSceeen extends StatelessWidget {
     return StatusBarWidget(
       child: Scaffold(
         backgroundColor: const Color(0xffF8F8F8),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              _haderContentWidget(context, size),
-              _dataContentWidget(context, size),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                _haderContentWidget(context, size),
+                _dataContentWidget(context, size),
+              ],
+            ),
           ),
         ),
       ),

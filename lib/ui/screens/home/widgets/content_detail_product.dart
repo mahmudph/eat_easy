@@ -49,68 +49,78 @@ class ContentDetailProduct extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          product.productName,
-          style: const TextStyle(
-            color: Color(0xff32324D),
-            fontWeight: FontWeight.bold,
-            fontFamily: "Mulish",
-            fontSize: 20,
+        Expanded(
+          child: Text(
+            product.productName,
+            style: const TextStyle(
+              color: Color(0xff32324D),
+              fontWeight: FontWeight.bold,
+              fontFamily: "Mulish",
+              fontSize: 18,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
+        ),
+        const SizedBox(
+          width: 10,
         ),
         ProductPrice(
           productPrice: product.productPrice,
-          fontSize: 24,
+          fontSize: 20,
         ),
       ],
     );
   }
 
   Widget contentDataWidget(BuildContext context, Size size) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: _headerProductWidget(context),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 24,
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: _headerProductWidget(context),
           ),
-          child: Text(
-            product.productDescription,
-            style: const TextStyle(
-              color: Color(0xff8E8EA9),
-              fontFamily: "Mulish",
-              fontSize: 14,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 12,
+              horizontal: 24,
+            ),
+            child: Text(
+              product.productDescription,
+              style: const TextStyle(
+                color: Color(0xff8E8EA9),
+                fontFamily: "Mulish",
+                fontSize: 14,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 30,
-            horizontal: 24,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 30,
+              horizontal: 24,
+            ),
+            child: ProductCompositionWidget(
+              compositionSize: product.compositionSize,
+            ),
           ),
-          child: ProductCompositionWidget(
-            compositionSize: product.compositionSize,
+          IngredientsListWidget(
+            ingredients: product.ingrediens,
           ),
-        ),
-        IngredientsListWidget(
-          ingredients: product.ingrediens,
-        ),
-        ListProductToppingsWidget(
-          productId: product.id,
-          listToppings: product.listToppings,
-        ),
-        ListProductRecomendationWiget(
-          productId: product.id,
-          recomendationProduct: productRecomendation,
-        ),
-        OrderProductMessageWidget(
-          productId: product.id,
-        ),
-      ],
+          ListProductToppingsWidget(
+            productId: product.id,
+            listToppings: product.listToppings,
+          ),
+          ListProductRecomendationWiget(
+            productId: product.id,
+            recomendationProduct: productRecomendation,
+          ),
+          OrderProductMessageWidget(
+            productId: product.id,
+          ),
+        ],
+      ),
     );
   }
 
@@ -168,6 +178,7 @@ class ContentDetailProduct extends StatelessWidget {
               const Icon(
                 Icons.star,
                 color: Color(0xffFFB01D),
+                size: 17,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 3),

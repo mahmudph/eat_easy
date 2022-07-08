@@ -41,9 +41,8 @@ class LandingScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: SizedBox(
-            width: size.width,
-            height: size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,25 +60,18 @@ class LandingScreen extends StatelessWidget {
   /// header content widget
   Widget _headerContentWidget(BuildContext context, Size size) {
     return SizedBox(
-      height: size.height * 0.8,
       width: size.width,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            const HeaderCaptionWidget(
-              title: "Let's Get Started 😁",
-              subTitle:
-                  "Sign up or login into to have a full digital experience in our restaurant",
-            ),
-            _contentButtonWidget(context, size),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const HeaderCaptionWidget(
+            title: "Let's Get Started 😁",
+            subTitle:
+                "Sign up or login into to have a full digital experience in our restaurant",
+          ),
+          _contentButtonWidget(context, size),
+        ],
       ),
     );
   }

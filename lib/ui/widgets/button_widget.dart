@@ -21,30 +21,33 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPress,
-      style: ElevatedButton.styleFrom(
-        primary: buttonColor,
-        onPrimary: titleColor,
-        alignment: Alignment.center,
-        shadowColor: Colors.white,
-        side: BorderSide.none,
-        elevation: 0,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+    return SizedBox(
+      height: MediaQuery.of(context).size.width * 0.15,
+      child: ElevatedButton(
+        onPressed: onPress,
+        style: ElevatedButton.styleFrom(
+          primary: buttonColor,
+          onPrimary: titleColor,
+          alignment: Alignment.center,
+          shadowColor: Colors.white,
+          side: BorderSide.none,
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
-      ),
-      child: SizedBox(
-        width: double.infinity,
-        child: Center(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: "Mucrim",
-              fontSize: 16,
-              color: titleColor,
+        child: SizedBox(
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: "Mucrim",
+                fontSize: 16,
+                color: titleColor,
+              ),
             ),
           ),
         ),

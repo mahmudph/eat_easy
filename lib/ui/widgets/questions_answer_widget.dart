@@ -98,7 +98,7 @@ class _QuestionAnswerWidgetState extends State<QuestionAnswerWidget> {
               children: [
                 ...widget.answerOptionsList.map((answer) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(3.0),
                     child: ClipItemWidget(
                       title: answer,
                       backgroundColor: const Color(0xffF5F5F5),

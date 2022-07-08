@@ -83,18 +83,23 @@ class _RegisterInputFormFieldScreenState
         backgroundColor: const Color(0xffF8F8F8),
         body: SizedBox(
           height: size.height,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _headerContentWidget(context, size),
-                  _contentButtonWidget(context, size),
-                ],
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _headerContentWidget(context, size),
+                      _contentButtonWidget(context, size),
+                    ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -104,112 +109,112 @@ class _RegisterInputFormFieldScreenState
   Widget _headerContentWidget(BuildContext context, Size size) {
     return SizedBox(
       width: size.width,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: size.height * 0.90,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const HeaderNavWidget(),
-            const HeaderCaptionWidget(
-              title: "Getting started! ✌️",
-              subTitle:
-                  "Look like you are new to us! Create an account for a complete experience.",
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const HeaderNavWidget(),
+          const HeaderCaptionWidget(
+            title: "Getting started! ✌️",
+            subTitle:
+                "Look like you are new to us! Create an account for a complete experience.",
+          ),
+          Form(
+            key: _formState,
+            child: Column(
+              children: [
+                FormFieldWidget(
+                  controller: name,
+                  textInputType: TextInputType.name,
+                  textInputAction: TextInputAction.next,
+                  hintText: 'Name',
+                  validator: (e) =>
+                      e!.isEmpty ? "Please enter a valid name" : null,
+                ),
+                FormFieldWidget(
+                  controller: mobilePhone,
+                  textInputType: TextInputType.phone,
+                  textInputAction: TextInputAction.next,
+                  hintText: 'Mobile Phone',
+                  maxLength: 12,
+                  validator: (e) {
+                    if (e == null || e.isEmpty) {
+                      return "Please enter a valid mobile phone";
+                    }
+                    if (!e.startsWith("08") && !e.startsWith("62")) {
+                      return "mobile phone must start with 08 or 62";
+                    }
+                    if (e.length != 12) {
+                      return "mobile phone must be 12 digits";
+                    }
+                    return null;
+                  },
+                ),
+                ValueListenableBuilder<bool>(
+                  valueListenable: obscurePasswordText,
+                  builder: (_, state, __) {
+                    return Column(
+                      children: [
+                        FormFieldWidget(
+                          controller: password,
+                          textInputType: TextInputType.text,
+                          textInputAction: TextInputAction.next,
+                          hintText: 'Password',
+                          obscureText: state,
+                          showObscureToggle: false,
+                          validator: (e) {
+                            if (e == null || e.isEmpty) {
+                              return "Please enter a valid password";
+                            } else if (e.length < 6) {
+                              return "Password must be at least 6 characters";
+                            }
+                            return null;
+                          },
+                        ),
+                        FormFieldWidget(
+                          controller: passwordConfirmation,
+                          textInputType: TextInputType.text,
+                          textInputAction: TextInputAction.done,
+                          onPressSufixobscureTextIcon: () {
+                            obscurePasswordText.value =
+                                !obscurePasswordText.value;
+                          },
+                          obscureText: state,
+                          showObscureToggle: true,
+                          hintText: 'Password Confirmation',
+                          validator: (e) {
+                            if (e == null || e.isEmpty) {
+                              return "Please enter a valid password";
+                            }
+                            if (e != password.text) {
+                              return "Password and Password Confirmation must be same";
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                )
+              ],
             ),
-            Form(
-              key: _formState,
-              child: Column(
-                children: [
-                  FormFieldWidget(
-                    controller: name,
-                    textInputType: TextInputType.name,
-                    textInputAction: TextInputAction.next,
-                    hintText: 'Name',
-                    validator: (e) =>
-                        e!.isEmpty ? "Please enter a valid name" : null,
-                  ),
-                  FormFieldWidget(
-                    controller: mobilePhone,
-                    textInputType: TextInputType.phone,
-                    textInputAction: TextInputAction.next,
-                    hintText: 'Mobile Phone',
-                    maxLength: 12,
-                    validator: (e) {
-                      if (e == null || e.isEmpty) {
-                        return "Please enter a valid mobile phone";
-                      }
-                      if (!e.startsWith("08") && !e.startsWith("62")) {
-                        return "mobile phone must start with 08 or 62";
-                      }
-                      if (e.length != 12) {
-                        return "mobile phone must be 12 digits";
-                      }
-                      return null;
-                    },
-                  ),
-                  ValueListenableBuilder<bool>(
-                    valueListenable: obscurePasswordText,
-                    builder: (_, state, __) {
-                      return Column(
-                        children: [
-                          FormFieldWidget(
-                            controller: password,
-                            textInputType: TextInputType.text,
-                            textInputAction: TextInputAction.next,
-                            hintText: 'Password',
-                            obscureText: state,
-                            showObscureToggle: false,
-                            validator: (e) {
-                              if (e == null || e.isEmpty) {
-                                return "Please enter a valid password";
-                              } else if (e.length < 6) {
-                                return "Password must be at least 6 characters";
-                              }
-                              return null;
-                            },
-                          ),
-                          FormFieldWidget(
-                            controller: passwordConfirmation,
-                            textInputType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
-                            onPressSufixobscureTextIcon: () {
-                              obscurePasswordText.value =
-                                  !obscurePasswordText.value;
-                            },
-                            obscureText: state,
-                            showObscureToggle: true,
-                            hintText: 'Password Confirmation',
-                            validator: (e) {
-                              if (e == null || e.isEmpty) {
-                                return "Please enter a valid password";
-                              }
-                              if (e != password.text) {
-                                return "Password and Password Confirmation must be same";
-                              }
-                              return null;
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _contentButtonWidget(BuildContext context, Size size) {
-    return ButtonWidget(
-      onPress: _handleOnClickNextButton,
-      title: "Next",
-      buttonColor: const Color(0xff615793),
-      titleColor: Colors.white,
+    return Expanded(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: ButtonWidget(
+          onPress: _handleOnClickNextButton,
+          title: "Next",
+          buttonColor: const Color(0xff615793),
+          titleColor: Colors.white,
+        ),
+      ),
     );
   }
 }

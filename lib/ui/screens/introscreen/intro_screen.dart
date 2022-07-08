@@ -63,7 +63,6 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget _contentIntroScreen(BuildContext context, Size size) {
     return Positioned.fill(
-      bottom: 16,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -86,6 +85,8 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget _bottomContentWidget(BuildContext context, Size size) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
       children: [
         ButtonWidget(
           onPress: onSignUpLater,
@@ -109,9 +110,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   /// scoll page content
   Widget _scolHeaderWidgetContent(BuildContext context, Size size) {
-    return SizedBox(
-      width: double.infinity,
-      height: size.height * 0.75,
+    return Expanded(
       child: PageView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: introPage.length,
@@ -130,7 +129,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
   Widget _indicatorActive(BuildContext context, Size size) {
     return Positioned(
-      top: size.height * 0.65,
+      top: size.height * 0.70,
       left: 0,
       right: 0,
       child: Center(

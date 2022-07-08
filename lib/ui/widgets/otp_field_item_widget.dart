@@ -22,8 +22,8 @@ class OtpFormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 55,
-      height: 55,
+      width: 45,
+      height: 45,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(13),
         color: Colors.white,
@@ -48,7 +48,7 @@ class OtpFormFieldWidget extends StatelessWidget {
                 isLastField ? TextInputAction.done : TextInputAction.next,
             maxLength: 1,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               fontFamily: "Mulish",
             ),

@@ -29,19 +29,23 @@ class OutlineButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      style: OutlinedButton.styleFrom(
-        primary: buttonColor,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+    return SizedBox(
+      height: MediaQuery.of(context).size.width * 0.15,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          primary: buttonColor,
+          alignment: Alignment.center,
+          minimumSize: const Size(60, 0),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
-      ),
-      onPressed: onPress,
-      child: SizedBox(
-        width: double.infinity,
-        child: child ?? _defaultChildWidget(context),
+        onPressed: onPress,
+        child: SizedBox(
+          width: double.infinity,
+          child: child ?? _defaultChildWidget(context),
+        ),
       ),
     );
   }

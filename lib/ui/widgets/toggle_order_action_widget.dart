@@ -60,7 +60,7 @@ class _ToggleOrderActionWidgetState extends State<ToggleOrderActionWidget> {
           Text(
             numOfOrder.toString(),
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               fontFamily: "Mulish",
               color: Color(0xff32324D),
               fontWeight: FontWeight.w600,

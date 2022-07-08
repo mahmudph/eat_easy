@@ -80,8 +80,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     "My Order",
                                     style: TextStyle(
                                       fontFamily: "DM Sans",
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
                                       color: Color(0xff32324D),
                                     ),
                                   ),
@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     },
                                     child: const Icon(
                                       Icons.arrow_forward_ios,
+                                      size: 20,
                                     ),
                                   )
                                 ],
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       "We think you might enjoy these specially selected dishes",
                       style: TextStyle(
                         fontFamily: "DM Sans",
-                        fontSize: 22,
+                        fontSize: 18,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff32324D),
                       ),

@@ -19,32 +19,40 @@ class RegisterShareLocationScreen extends StatelessWidget {
       backgroundColor: const Color(0xffF8F8F8),
       body: SizedBox(
         width: size.width,
-        height: size.height,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const HeaderNavWidget(),
-              _contentDataWidget(context, size),
-              _contentBottomWidget(context, size),
-            ],
-          ),
+        child: CustomScrollView(
+          shrinkWrap: true,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const HeaderNavWidget(),
+                    _contentDataWidget(context, size),
+                    _contentBottomWidget(context, size),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   Widget _contentDataWidget(BuildContext context, Size size) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-      ),
-      child: SizedBox(
-        height: size.height * 0.70,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
               width: size.width * 0.35,
@@ -53,9 +61,6 @@ class RegisterShareLocationScreen extends StatelessWidget {
                 fit: BoxFit.contain,
                 alignment: Alignment.bottomCenter,
               ),
-            ),
-            const SizedBox(
-              height: 32,
             ),
             const HeaderCaptionWidget(
               title: "Share your location\nwith us to order",
@@ -70,6 +75,7 @@ class RegisterShareLocationScreen extends StatelessWidget {
 
   Widget _contentBottomWidget(BuildContext context, Size size) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         ButtonWidget(
           onPress: () {

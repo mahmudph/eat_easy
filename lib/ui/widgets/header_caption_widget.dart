@@ -35,7 +35,7 @@ class HeaderCaptionWidget extends StatelessWidget {
               fontFamily: "DM Sans",
               color: Color(0xff32324D),
               fontWeight: FontWeight.w500,
-              fontSize: 22,
+              fontSize: 20,
             ),
           ),
           const SizedBox(

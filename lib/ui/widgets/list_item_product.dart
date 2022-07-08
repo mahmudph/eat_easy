@@ -56,8 +56,8 @@ class ListItemProductWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: SizedBox(
-                height: 100,
-                width: 100,
+                height: 80,
+                width: 80,
                 child: Image.asset(
                   product.productImage,
                 ),
@@ -67,17 +67,22 @@ class ListItemProductWidget extends StatelessWidget {
               width: 7,
             ),
             Expanded(
+              flex: 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product.productName,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontFamily: "Mulish",
-                      color: Color(0xff32324D),
-                      fontWeight: FontWeight.w600,
+                  Flexible(
+                    child: Text(
+                      product.productName,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontFamily: "Mulish",
+                        color: Color(0xff32324D),
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
                     ),
                   ),
                   reviewContenWidget(),
@@ -105,6 +110,7 @@ class ListItemProductWidget extends StatelessWidget {
         const Icon(
           Icons.star_half,
           color: Color(0xffFFB01D),
+          size: 15,
         ),
         RichText(
           text: TextSpan(

@@ -27,7 +27,7 @@ class IntroPageViewItem extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: size.height * 0.60,
+            height: size.height * 0.45,
             child: Image.asset(
               data.image,
               fit: BoxFit.cover,
@@ -41,7 +41,7 @@ class IntroPageViewItem extends StatelessWidget {
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontFamily: "DM Sans",
-                  fontSize: 26,
+                  fontSize: 20,
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.w500,
                 ),

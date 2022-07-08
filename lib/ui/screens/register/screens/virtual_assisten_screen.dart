@@ -18,22 +18,41 @@ class RegisterVirtualAssistenScreen extends StatelessWidget {
     return StatusBarWidget(
       child: Scaffold(
         backgroundColor: const Color(0xffF8F8F8),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _headerContentImage(context, size),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: HeaderCaptionWidget(
-                title: "Hello! 👋\nI'm your virtual assistant.",
-                subTitle:
-                    "In order to find the best suited choices for you, please answer the next few questions.",
-              ),
+        body: SizedBox(
+          height: size.height,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: size.height * 0.8,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        child: _headerContentImage(context, size),
+                      ),
+                      Positioned(
+                        top: size.height / 2.1,
+                        left: 0,
+                        right: 0,
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: HeaderCaptionWidget(
+                            title: "Hello! 👋\nI'm your virtual assistant.",
+                            subTitle:
+                                "In order to find the best suited choices for you, please answer the next few questions.",
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                // const Spacer(),
+                _bottomWidgetContent(context, size),
+              ],
             ),
-            const Spacer(),
-            _bottomWidgetContent(context, size),
-          ],
+          ),
         ),
       ),
     );
@@ -41,7 +60,7 @@ class RegisterVirtualAssistenScreen extends StatelessWidget {
 
   Widget _headerContentImage(BuildContext context, Size size) {
     return Container(
-      height: size.height * 0.5,
+      height: size.height * 0.6,
       width: size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(

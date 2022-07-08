@@ -56,6 +56,10 @@ class FormFieldWidget extends StatelessWidget {
         validator: validator,
         obscureText: obscureText,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 12,
+          ),
           hintText: hintText,
           suffixIcon: showObscureToggle
               ? InkWell(
@@ -72,6 +76,8 @@ class FormFieldWidget extends StatelessWidget {
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
+          filled: true,
+          isDense: true,
           counter: null,
           counterText: "",
           border: OutlineInputBorder(

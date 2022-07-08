@@ -19,16 +19,25 @@ class RegisterRecomendationScreen extends StatelessWidget {
     return StatusBarWidget(
       child: Scaffold(
         backgroundColor: const Color(0xffF8F8F8),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const HeaderNavWidget(),
-              _contentDataWidget(context, size),
-              const Spacer(),
-              _bottomFotterContent(context, size),
+        body: SizedBox(
+          height: size.height,
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const HeaderNavWidget(),
+                      _contentDataWidget(context, size),
+                      _bottomFotterContent(context, size),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -47,9 +56,10 @@ class RegisterRecomendationScreen extends StatelessWidget {
               "You can use the recommendations configured during your last visit to our restaurant or you can have new ones ",
         ),
         SizedBox(
-          height: size.height * 0.40,
+          height: size.height * 0.50,
           child: ListView.separated(
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (_, i) => const SizedBox(
               height: 24,
             ),
@@ -73,8 +83,7 @@ class RegisterRecomendationScreen extends StatelessWidget {
 
   /// footer content widget
   Widget _bottomFotterContent(BuildContext context, Size size) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
+    return Flexible(
       child: SizedBox(
         width: size.width,
         child: ButtonWidget(
