@@ -20,6 +20,7 @@ cache:
     - .pub-cache/global_packages
 
 before_script:
+  - echo "runing script before script"
   - chmod +x ./android/gradlew
   - flutter doctor -v
   - echo flutter.sdk=${pwd}/flutter > android/local.properties
@@ -33,3 +34,6 @@ build:
     - flutter pub get
     - flutter build apk --split-per-abi
     - flutter build appbundle
+  artifacts:
+    paths:
+      - build/app/outputs/apk/release/*.apk 
