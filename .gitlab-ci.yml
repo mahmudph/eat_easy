@@ -4,7 +4,7 @@ workflow:
     - if: $CI_COMMIT_TAG  
     - if: '$CI_PIPELINE_SOURCE == "push"'
 
-image: registry.gitlab.com/budiprihhastomo/flutter-docker:latest ENTRYPOINT=/bin/bash
+image: registry.gitlab.com/budiprihhastomo/flutter-docker:latest
 
 
 stages: 
@@ -20,8 +20,6 @@ cache:
     - .pub-cache/global_packages
 
 before_script:
-  - echo "runing script before script"
-  - chmod +x ./android/gradlew
   - flutter doctor -v
   - echo flutter.sdk=${pwd}/flutter > android/local.properties
   - echo sdk.dir=${ANDROID_HOME} >> android/local.properties
@@ -30,7 +28,6 @@ before_script:
 build: 
   stage: build
   script:
-    - echo "build an application"
     - flutter pub get
     - flutter build apk --split-per-abi
     - flutter build appbundle
