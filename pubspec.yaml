@@ -65,7 +65,7 @@ flutter:
     - lib/assets/images/splashscren.png
     - lib/assets/images/illustration.png
     - lib/assets/images/illustration2.png
-
+    
     - lib/assets/images/products/product1.png
     - lib/assets/images/products/product2.png
     - lib/assets/images/products/product3.png
