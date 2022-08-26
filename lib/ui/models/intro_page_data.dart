@@ -21,11 +21,11 @@ List<IntroPageData> introPage = [
   IntroPageData(
     title: "Full contactless experience",
     description: "From ordering to paying, that's all contactless",
-    image: 'lib/assets/images/illustration.png',
+    image: 'lib/assets/images/Ilustration.png',
   ),
   IntroPageData(
     title: "Help by smart assisten",
     description: "From ordering to paying, that's all contactless",
-    image: 'lib/assets/images/illustration2.png',
+    image: 'lib/assets/images/Ilustration2.png',
   ),
 ];
