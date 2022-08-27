@@ -2,10 +2,8 @@ workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_TAG  
-    - if: '$CI_PIPELINE_SOURCE == "push"'
 
 image: registry.gitlab.com/mahmud120398/flutter-android-31
-
 
 stages: 
   - test
@@ -25,7 +23,7 @@ before_script:
   - flutter doctor -v
   - echo flutter.sdk=${FLUTTER_HOME} > android/local.properties
   - echo sdk.dir=${ANDROID_HOME} >> android/local.properties
-  - echo ${FASTLANE_CREDENTIAL} -d | base64 > android/fastlane/publis-credential.json
+  - echo ${FASTLANE_CREDENTIAL} | base64 -d > android/fastlane/publis-credential.json
   - echo ${KEY_JKS} | base64 -d > android/app/key.jks
   - echo ${KEY_PROPERTIES} | base64 -d > android/key.properties
 
