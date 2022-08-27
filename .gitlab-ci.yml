@@ -25,9 +25,9 @@ before_script:
   - flutter doctor -v
   - echo flutter.sdk=${FLUTTER_HOME} > android/local.properties
   - echo sdk.dir=${ANDROID_HOME} >> android/local.properties
-  - echo ${FASTLANE_CREDENTIAL} | base64 > android/fastlane/publis-credential.json
-  - echo ${KEY_JKS} | base64 > android/app/key.jks
-  - echo ${KEY_PROPERTIES} | base64 > android/key.properties
+  - echo ${FASTLANE_CREDENTIAL} -d | base64 > android/fastlane/publis-credential.json
+  - echo ${KEY_JKS} | base64 -d > android/app/key.jks
+  - echo ${KEY_PROPERTIES} | base64 -d > android/key.properties
 
 test: 
   stage: test
@@ -54,12 +54,13 @@ deploy:
     - echo "running flutter deploy to beta tester"
     - flutter pub get
     - flutter build appbundle --release 
-    - fastlane test
-    - fastlane beta
+    - cd android && fastlane android && fastlane beta
 
   artifacts:
     paths:
       - build/app/outputs/bundle/release/app-release.aab
+      - android/fastlane/screenshots
+      - android/fastlane/logs
 
 deploy:
   stage: deploy-prod
@@ -68,9 +69,10 @@ deploy:
     - echo "running flutter deploy"
     - flutter pub get
     - flutter build appbundle --release 
-    - fastlane test
-    - fastlane deploy
+    - cd android && fastlane android && fastlane deploy
 
   artifacts:
     paths:
       - build/app/outputs/bundle/release/app-release.aab
+      - android/fastlane/screenshots
+      - android/fastlane/logs

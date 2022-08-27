@@ -23,16 +23,27 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+   
+    changelog_from_git_commits
+
+    crashlytics(
+      api_token: '[insert_key_here]',
+      build_secret: '[insert_secret_here]',
+      notes: changelog
+    )
+
+    gradle(task: "bundle", build_type: "Release")
+    rescue => exception
+	    on_error(exception)
+    end
+	  supply(track: "alpha", aab:"../build/app/outputs/bundle/release/app.aab")
+	  upload_to_play_store
   end
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "bundle" build_type: "Release")
+    supply(track: "alpha", aab:"../build/app/outputs/bundle/release/app.aab")
     upload_to_play_store
   end
 end
