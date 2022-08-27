@@ -10,7 +10,8 @@ image: registry.gitlab.com/mahmud120398/flutter-android-31
 stages: 
   - test
   - build 
-  - deploy
+  - deploy-beta
+  - deploy-prod
 
 
 cache: 
@@ -46,13 +47,29 @@ build:
       - build/app/outputs/apk/release/*.apk 
 
 deploy:
-  stage: deploy
+  stage: deploy-beta
   rules:
     - if: $CI_COMMIT_TAG  
+  script: 
+    - echo "running flutter deploy to beta tester"
+    - flutter pub get
+    - flutter build appbundle --release 
+    - fastlane test
+    - fastlane beta
+
+  artifacts:
+    paths:
+      - build/app/outputs/bundle/release/app-release.aab
+
+deploy:
+  stage: deploy-prod
+  when: manual 
   script: 
     - echo "running flutter deploy"
     - flutter pub get
     - flutter build appbundle --release 
+    - fastlane test
+    - fastlane deploy
 
   artifacts:
     paths:
