@@ -12,4 +12,4 @@ key.properties
 **/*.keystore
 **/*.jks
 
-fastlane/com-example-eat-easy-app-cdb5eadb1a0a.json
+fastlane/publis-credential.json
